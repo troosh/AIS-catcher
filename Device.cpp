@@ -92,7 +92,7 @@ namespace Device {
 
 	std::vector<uint32_t> RAWFile::SupportedSampleRates()
 	{
-		return { 48000, 288000, 384000, 768000, 1536000 };
+		return { 48000, 288000, 384000, 768000, 1536000, 1920000 };
 	}
 
 	//---------------------------------------
@@ -295,7 +295,7 @@ namespace Device {
 
 	std::vector<uint32_t> RTLSDR::SupportedSampleRates()
 	{
-		return { 288000, 1536000 };
+		return { 288000, 1536000, 1920000 };
 	}
 
 	void RTLSDR::pushDeviceList(std::vector<Description>& DeviceList)

@@ -120,6 +120,20 @@ public:
 		void Receive(const CFLOAT32* data, int len);
 	};
 
+	class Downsample5Complex : public SimpleStreamInOut<CFLOAT32, CFLOAT32>
+	{
+		std::vector <CFLOAT32> output;
+		std::vector <CFLOAT32> buffer;
+
+	public:
+		Downsample5Complex()
+		{
+			buffer.resize(38, 0.0f);
+		}
+
+		void Receive(const CFLOAT32* data, int len);
+	};
+
 	class FilterComplex : public SimpleStreamInOut<CFLOAT32, CFLOAT32>
 	{
 		std::vector <CFLOAT32> output;

@@ -26,7 +26,7 @@ namespace AIS
 {
 	std::vector<uint32_t> ModelStandard::SupportedSampleRates()
 	{
-		return { 1536000, 768000, 384000, 288000, 96000 };
+		return { 1920000, 1536000, 768000, 384000, 288000, 96000 };
 	}
 
 	void ModelStandard::buildModel(int sample_rate, bool timerOn)
@@ -50,6 +50,9 @@ namespace AIS
 
 		switch (sample_rate)
 		{
+		case 1920000:
+			physical >> DS5 >> DS2_2 >> DS2_1 >> ROT;
+			break;
 		case 1536000:
 			physical >> DS2_4 >> DS2_3 >> DS2_2 >> DS2_1 >> ROT;
 			break;
@@ -95,7 +98,7 @@ namespace AIS
 
 	std::vector<uint32_t> ModelBase::SupportedSampleRates()
 	{
-		return { 1536000, 768000, 384000, 288000, 96000 };
+		return { 1920000, 1536000, 768000, 384000, 288000, 96000 };
 	}
 
 	void ModelBase::buildModel(int sample_rate,bool timerOn)
@@ -114,6 +117,9 @@ namespace AIS
 
 		switch (sample_rate)
 		{
+		case 1920000:
+			physical >> DS5 >> DS2_2 >> DS2_1 >> ROT;
+			break;
 		case 1536000:
 			physical >> DS2_4 >> DS2_3 >> DS2_2 >> DS2_1 >> ROT;
 			break;
@@ -145,7 +151,7 @@ namespace AIS
 
 	std::vector<uint32_t> ModelCoherent::SupportedSampleRates()
 	{
-		return { 1536000, 768000, 384000, 288000, 96000 };
+		return { 1920000, 1536000, 768000, 384000, 288000, 96000 };
 	}
 
 	void ModelCoherent::buildModel(int sample_rate, bool timerOn)
@@ -175,6 +181,9 @@ namespace AIS
 
 		switch (sample_rate)
 		{
+		case 1920000:
+			physical >> DS5 >> DS2_2 >> DS2_1 >> ROT;
+			break;
 		case 1536000:
 			physical >> DS2_4 >> DS2_3 >> DS2_2 >> DS2_1 >> ROT;
 			break;
@@ -276,7 +285,7 @@ namespace AIS
 
 	std::vector<uint32_t> ModelChallenger::SupportedSampleRates()
 	{
-		return { 1536000, 768000, 384000, 288000, 96000 };
+		return { 1920000, 1536000, 768000, 384000, 288000, 96000 };
 	}
 
 	void ModelChallenger::buildModel(int sample_rate, bool timerOn)
@@ -305,6 +314,9 @@ namespace AIS
 
 		switch (sample_rate)
 		{
+		case 1920000:
+			physical >> DS5 >> DS2_2 >> DS2_1 >> ROT;
+			break;
 		case 1536000:
 			physical >> DS2_4 >> DS2_3 >> DS2_2 >> DS2_1 >> ROT;
 			break;

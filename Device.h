@@ -138,7 +138,7 @@ namespace Device{
 
 		std::vector<char> buffer;
 		std::vector<CFLOAT32> output;
-		const int buffer_size = 8096 * 8 * 3;
+		const int buffer_size = 8192 * 8 * 3 * 5;
 
 		Format format = Format::CU8;
 

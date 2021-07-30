@@ -216,6 +216,56 @@ namespace DSP
 		sendOut(output.data(), len / 3);
 	}
 
+	void Downsample5Complex::Receive(const CFLOAT32* data, int len)
+	{
+		assert(len % 5 == 0);
+
+		int ptr, i, j;
+
+		if (output.size() < len/5) output.resize(len/5);
+
+		for (j = i = 0, ptr = 19 - 1; i < 19 - 1; i += 5, j++)
+		{
+			buffer[ptr++] = data[i];
+			buffer[ptr++] = data[i + 1];
+			buffer[ptr++] = data[i + 2];
+			buffer[ptr++] = data[i + 3];
+			buffer[ptr++] = data[i + 4];
+
+			CFLOAT32 x = 0.31070225733f * buffer[i + 9];
+			x -= 0.02029180052f * (buffer[i + 0] + buffer[i + 18]);
+			x -= 0.03693692581f * (buffer[i + 1] + buffer[i + 17]);
+			x -= 0.04221362949f * (buffer[i + 2] + buffer[i + 16]);
+			x -= 0.03043770079f * (buffer[i + 3] + buffer[i + 15]);
+			x += 0.04565655118f * (buffer[i + 5] + buffer[i + 13]);
+			x += 0.09849846882f * (buffer[i + 6] + buffer[i + 12]);
+			x += 0.14774770323f * (buffer[i + 7] + buffer[i + 11]);
+			x += 0.18262620471f * (buffer[i + 8] + buffer[i + 10]);
+
+			output[j] = x;
+		}
+
+		for (i = 1; i < len - 19 + 1; i += 5, j++)
+		{
+			CFLOAT32 x = 0.31070225733f * data[i + 9];
+			x -= 0.02029180052f * (data[i + 0] + data[i + 18]);
+			x -= 0.03693692581f * (data[i + 1] + data[i + 17]);
+			x -= 0.04221362949f * (data[i + 2] + data[i + 16]);
+			x -= 0.03043770079f * (data[i + 3] + data[i + 15]);
+			x += 0.04565655118f * (data[i + 5] + data[i + 13]);
+			x += 0.09849846882f * (data[i + 6] + data[i + 12]);
+			x += 0.14774770323f * (data[i + 7] + data[i + 11]);
+			x += 0.18262620471f * (data[i + 8] + data[i + 10]);
+
+			output[j] = x;
+		}
+		for (ptr = 0; i < len; i++, ptr++)
+		{
+			buffer[ptr] = data[i];
+		}
+
+		sendOut(output.data(), len / 5);
+	}
 	// Filter Generic
 
 	void FilterComplex::Receive(const CFLOAT32* data, int len)

@@ -138,7 +138,7 @@ namespace Device{
 
 		std::vector<char> buffer;
 		std::vector<CFLOAT32> output;
-		const int buffer_size = 8192 * 8 * 3 * 5;
+		const int buffer_size = 8192 * 2 * 3 * 5;
 
 		Format format = Format::CU8;
 
@@ -188,7 +188,7 @@ namespace Device{
 		void callback(CU8* buf, int len);
 		void Demodulation();
 
-		static const uint32_t BufferLen = 2048 * 2 * 2 * 6;
+		static const uint32_t BufferLen = 2048 * 4 * 3 * 5;
 		rtlsdr_dev_t* getDevice() { return dev; }
 
 	public:
